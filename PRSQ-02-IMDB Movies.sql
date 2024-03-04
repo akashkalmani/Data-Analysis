@@ -1,0 +1,17 @@
+use project_movie_database;
+show databases;
+show tables;
+select*from movies;
+select*from directors;
+select count(original_title) as total_movies from movies;
+select name from directors where name in ('James Cameron','luc besson','john woo');
+select*from directors where name like 'steven%';
+select count(gender) as female_directors_count from directors where gender='1';
+select*from directors where gender='1'order by id asc limit 10;
+select popularity,title from movies order by popularity desc limit 3;
+select title, revenue from movies order by revenue desc limit 3;
+select vote_average, release_date from movies where release_date >= '2000-01-01' order by vote_average desc limit 1;
+select directors.name, movies.title from movies join directors on movies.director_id = directors.id where name = 'brenda chapman';
+select count(title) as count_title, name from movies join directors on movies.director_id = directors.id group by name order by count_title desc;
+select movies.title, directors.name from movies join directors on movies.director_id = directors.id where name = 'Gore Verbinski';
+select name, sum(revenue) from movies join directors on movies.director_id = directors.id group by name order by sum(revenue) desc;
